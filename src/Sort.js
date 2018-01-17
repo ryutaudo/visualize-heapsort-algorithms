@@ -1,14 +1,27 @@
 class HeapSort {
   constructor(array) {
     this.array = array;
-    this.maxHeap = array;
+    this.maxHeap = [];
   }
 
-  createMaxHeap(array) {
+  createMaxHeap() {
+    this.maxHeap.push(this.array[0]);
     // loop though each element
-      // if child value at [i] is greater than paraent at quotient of (i - 1)/2
-        // swap the element
-    return array;
+    for (let i = 1; i < this.array.length; i += 1) {
+      this.maxHeap.push(this.array[i]);
+      let currentIndex = i;
+
+      while (currentIndex > 0) {
+        const parentIndex = Math.floor((currentIndex - 1) / 2);
+        if (this.maxHeap[currentIndex] > this.maxHeap[parentIndex]) {
+          const currentElement = this.maxHeap[currentIndex];
+          this.maxHeap[currentIndex] = this.maxHeap[parentIndex];
+          this.maxHeap[parentIndex] = currentElement;
+        }
+        currentIndex = parentIndex;
+      }
+    }
+    return this.maxHeap;
   }
 
   sort() {
