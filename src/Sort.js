@@ -7,7 +7,6 @@ const swap = (targetArray, index1, index2) => {
 
 const createMaxHeap = (array) => {
   const maxHeap = [array[0]];
-  // loop though each element
   for (let i = 1; i < array.length; i += 1) {
     maxHeap.push(array[i]);
     let currentIndex = i;
