@@ -15,7 +15,20 @@ describe('Sort', () => {
       const heapSortIns = new HeapSort([4, 10, 3, 5, 1]);
       const expected = [10, 5, 3, 4, 1];
       // Exercise
-      const actual = heapSortIns.createMaxHeap([4, 10, 3, 5, 1]);
+      heapSortIns.createMaxHeap();
+  
+      // Assert
+      expect(heapSortIns.maxHeap).to.eql(expected);
+    });
+  });
+
+  describe('swap method', () => {
+    it('should swap first and last element of array', () => {
+      // Setup
+      const heapSortIns = new HeapSort([4, 10, 3, 5, 1]);
+      const expected = [1, 10, 3, 5, 4];
+      // Exercise
+      const actual = heapSortIns.swap([4, 10, 3, 5, 1], 0, 4);
   
       // Assert
       expect(actual).to.eql(expected);
