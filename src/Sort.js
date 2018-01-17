@@ -1,16 +1,15 @@
-class SomeKindOfSort {
+class HeapSort {
   constructor(array) {
     this.array = array;
   }
+
   sort() {
-    console.log('sort!');
-    console.log('sort!');
-    console.log('sort!');
+
   }
 
-  returnValue(value) {
-    return value;
+  returnValue() {
+    return this.array;
   }
 }
 
-module.exports = SomeKindOfSort;
+module.exports = HeapSort;
