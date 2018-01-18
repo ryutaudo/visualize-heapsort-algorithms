@@ -4,7 +4,16 @@ body {
 
 #sort-window {
   height : 500px;
-  widows: 100px;
   background-color: white;
   margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bar {
+  background-color: blue;
+  width: 50px;
+  margin-left: 2px
 }

@@ -54,7 +54,17 @@ const unsortedArray = document.createTextNode(JSON.stringify(unsorted));
 
 const initializeSort = (event) => {
   event.preventDefault();
-  sortWindow.append(unsortedArray);
+  const maxHeight = Math.max(...unsorted);
+  for(let i = 0; i < unsorted.length; i += 1) {
+    console.log(i)
+    const bar = document.createElement('div');
+    const barId = 'bar'+ i;
+    const height = unsorted[i] / maxHeight * 450 + 'px';
+    bar.setAttribute('class', 'bar');
+    bar.setAttribute('id', barId);
+    bar.style.height = height;
+    sortWindow.append(bar);
+  }
 }
 
 const sort = (event) => {
