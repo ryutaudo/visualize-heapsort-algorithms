@@ -4,13 +4,13 @@
 */
 
 // How can we use require here if it's frontend? We can thank webpack.
-const Sort = require('./Sort');
+const HeapSort = require('./Sort').HeapSort;
 
 // A link to our styles!
 require('./index.css');
-
-const sort = new Sort();
-sort.sort();
+const unsorted = [6, 5, 3, 1, 8, 7, 2, 4]
+const heapSort = new HeapSort(unsorted);
+const sorted = heapSort.sort();
 
 function createCheesyTitle(slogan) {
   const container = document.createElement('h1');
@@ -19,7 +19,7 @@ function createCheesyTitle(slogan) {
   return container;
 }
 
-const title = createCheesyTitle(sort.returnValue('Re-Engineer Yourself'));
+const title = createCheesyTitle(heapSort.returnValue('Re-Engineer Yourself'));
 document.getElementById('title').appendChild(title);
 
 /*
@@ -31,10 +31,24 @@ document.getElementById('title').appendChild(title);
   */
 function changeTitle(event) {
   event.preventDefault();
-  // console.log('What is an event?', event);
+  console.log('What is an event?', event);
 }
 
 const form = document.querySelector('form');
 document.addEventListener('DOMContentLoaded', () => {
   form.onsubmit = changeTitle;
 });
+
+const startButton = document.querySelector('#start');
+document.addEventListener('DOMContentLoaded', () => {
+  startButton.onclick = initializeSort;
+});
+
+const sortWindow = document.querySelector("#sort-window")
+
+const initializeSort = (event) => {
+  event.preventDefault();
+  const unsortedArray = document.createTextNode(JSON.stringify(unsorted));
+  sortWindow.append(unsortedArray);
+}
+

@@ -43,9 +43,7 @@ describe('Sort', () => {
         const heapSortIns = new HeapSort([4, 10, 3, 5, 1]);
         const expected = [1, 3, 4, 5, 10];
         // Exercise 
-        heapSortIns.sort();
-        const actual = heapSortIns.returnValue();
-    
+        const actual = heapSortIns.sort();
         // Assert
         expect(actual).to.eql(expected);
       });

@@ -36,11 +36,11 @@ class HeapSort {
       const elementToAdd = maxHeap.pop();
       resultArray.unshift(elementToAdd);
     }
-    this.array = resultArray;
+    return resultArray;
   }
 
-  returnValue() {
-    return this.array;
+  returnValue(value) {
+    return value;
   }
 }
 
