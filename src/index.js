@@ -34,7 +34,10 @@ Here is the code that talks to it.
 */
 function changeTitle(event) {
   event.preventDefault();
-  console.log('What is an event?', event);
+  const newTitle = createCheesyTitle(document.getElementById('form').myname.value);
+  const titleElement = document.getElementById('title');
+  titleElement.removeChild(titleElement.firstChild);
+  titleElement.appendChild(newTitle);
 }
 
 const form = document.querySelector('form');
