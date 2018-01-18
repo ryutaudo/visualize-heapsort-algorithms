@@ -10,10 +10,8 @@ const HeapSort = require('./Sort').HeapSort;
 require('./index.css');
 
 // Setup
-const unsorted = [6, 5, 3, 1, 8, 7, 2, 4]
-const heapSort = new HeapSort(unsorted);
-const sorted = heapSort.sort();
-const maxHeight = Math.max(...unsorted);
+let unsorted = [];
+const sortWindow = document.querySelector("#sort-window");
 
 // Create Title
 function createCheesyTitle(slogan) {
@@ -23,7 +21,7 @@ function createCheesyTitle(slogan) {
   return container;
 }
 
-const title = createCheesyTitle(heapSort.returnValue('Re-Engineer Yourself'));
+const title = createCheesyTitle('Heap Sort !! Heat Soul !!');
 document.getElementById('title').appendChild(title);
 
 function changeTitle(event) {
@@ -54,10 +52,11 @@ const createRandomArray = (length, max) => {
 }
 
 const createBars = (array) => {
+  const maxHeight = Math.max(...array);
   for(let i = 0; i < array.length; i += 1) {
     const bar = document.createElement('div');
     const barId = 'bar'+ i;
-    const height = array[i] / maxHeight * 300 + 'px';
+    const height = array[i] / maxHeight * 450 + 'px';
     bar.setAttribute('class', 'bar');
     bar.setAttribute('id', barId);
     bar.style.height = height;
@@ -71,33 +70,8 @@ const getRandomArray = (event) => {
   const length = document.getElementById('get-array').arraylength.value;
   const max = document.getElementById('get-array').max.value;
   const randomArray = createRandomArray(length, max);
+  unsorted = randomArray;
   createBars(randomArray);
-}
-
-const startButton = document.querySelector('#start');
-document.addEventListener('DOMContentLoaded', () => {
-  startButton.onclick = initializeSort;
-});
-
-const sortButton = document.querySelector('#sort');
-document.addEventListener('DOMContentLoaded', () => {
-  sortButton.onclick = sort;
-});
-
-const sortWindow = document.querySelector("#sort-window")
-const unsortedArray = document.createTextNode(JSON.stringify(unsorted));
-
-const initializeSort = (event) => {
-  event.preventDefault();
-  for(let i = 0; i < unsorted.length; i += 1) {
-    const bar = document.createElement('div');
-    const barId = 'bar'+ i;
-    const height = unsorted[i] / maxHeight * 450 + 'px';
-    bar.setAttribute('class', 'bar');
-    bar.setAttribute('id', barId);
-    bar.style.height = height;
-    sortWindow.append(bar);
-  }
 }
 
 const removeChildrenFromSortWindow = () => {
@@ -106,15 +80,16 @@ const removeChildrenFromSortWindow = () => {
   }  
 }
 
+// Sort
+const sortButton = document.querySelector('#sort');
+document.addEventListener('DOMContentLoaded', () => {
+  sortButton.onclick = sort;
+});
+
 const sort = (event) => {
   event.preventDefault();
   removeChildrenFromSortWindow();
-  for(let i = 0; i < sorted.length; i += 1) {
-    const bar = document.createElement('div');
-    const barId = 'bar'+ i;
-    const height = sorted[i] / maxHeight * 450 + 'px';
-    bar.setAttribute('class', 'bar '+ barId);
-    bar.style.height = height;
-    sortWindow.append(bar);
-  }
+  const heapSort = new HeapSort(unsorted);
+  const sorted = heapSort.sort();
+  createBars(sorted);
 }
