@@ -23,12 +23,12 @@ const title = createCheesyTitle(heapSort.returnValue('Re-Engineer Yourself'));
 document.getElementById('title').appendChild(title);
 
 /*
-    An simple example of how you can make your project a bit more
-    interactive, if you would like.
+An simple example of how you can make your project a bit more
+interactive, if you would like.
 
-    In our `index.html` page, we have a short form.
-    Here is the code that talks to it.
-  */
+In our `index.html` page, we have a short form.
+Here is the code that talks to it.
+*/
 function changeTitle(event) {
   event.preventDefault();
   console.log('What is an event?', event);
@@ -44,11 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
   startButton.onclick = initializeSort;
 });
 
+const sortButton = document.querySelector('#sort');
+document.addEventListener('DOMContentLoaded', () => {
+  sortButton.onclick = sort;
+});
+
 const sortWindow = document.querySelector("#sort-window")
+const unsortedArray = document.createTextNode(JSON.stringify(unsorted));
 
 const initializeSort = (event) => {
   event.preventDefault();
-  const unsortedArray = document.createTextNode(JSON.stringify(unsorted));
   sortWindow.append(unsortedArray);
 }
 
+const sort = (event) => {
+  event.preventDefault();
+  const sortedArray = document.createTextNode(JSON.stringify(sorted));
+  unsortedArray.remove();
+  sortWindow.append(sortedArray);
+}
