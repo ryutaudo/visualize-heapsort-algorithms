@@ -14,7 +14,7 @@ let unsorted = [];
 const sortWindow = document.querySelector("#sort-window");
 
 // Create Title
-function createCheesyTitle(slogan) {
+const createCheesyTitle = (slogan) => {
   const container = document.createElement('h1');
   const textNode = document.createTextNode(slogan);
   container.appendChild(textNode);
@@ -24,7 +24,7 @@ function createCheesyTitle(slogan) {
 const title = createCheesyTitle('Heap Sort !! Heat Soul !!');
 document.getElementById('title').appendChild(title);
 
-function changeTitle(event) {
+const changeTitle = (event) => {
   event.preventDefault();
   const newTitle = createCheesyTitle(document.getElementById('name-form').myname.value);
   const titleElement = document.getElementById('title');
