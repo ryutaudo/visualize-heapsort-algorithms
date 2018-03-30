@@ -1,4 +1,6 @@
 # Project: Visualize Sorting Algorithms
+![heapsort](https://user-images.githubusercontent.com/18551862/38125416-3bf60842-3424-11e8-8b83-48b9f1e877d8.png)
+
 ## Environment
 ### Installing Dependencies and Set Up
 
